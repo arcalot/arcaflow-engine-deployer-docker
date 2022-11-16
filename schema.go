@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"time"
 
-	"go.flow.arcalot.io/deployer-docker/util"
+	"go.flow.arcalot.io/dockerdeployer/util"
 
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/api/types/network"

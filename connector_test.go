@@ -9,7 +9,7 @@ import (
 
 	"go.arcalot.io/assert"
 	"go.arcalot.io/log"
-	docker "go.flow.arcalot.io/deployer-docker"
+	docker "go.flow.arcalot.io/dockerdeployer"
 )
 
 func TestSimpleInOut(t *testing.T) {

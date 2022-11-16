@@ -1,4 +1,4 @@
-module go.flow.arcalot.io/deployer-docker
+module go.flow.arcalot.io/dockerdeployer
 
 go 1.18
 
