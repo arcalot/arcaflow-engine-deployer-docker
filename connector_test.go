@@ -8,7 +8,7 @@ import (
 	"testing"
 
 	"go.arcalot.io/assert"
-	"go.arcalot.io/log"
+	log "go.arcalot.io/log/v2"
 	docker "go.flow.arcalot.io/dockerdeployer"
 )
 
