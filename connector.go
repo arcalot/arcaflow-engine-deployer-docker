@@ -13,7 +13,7 @@ import (
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
-	"go.arcalot.io/log"
+	log "go.arcalot.io/log/v2"
 	"go.flow.arcalot.io/deployer"
 )
 
