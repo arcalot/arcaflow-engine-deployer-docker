@@ -35,3 +35,7 @@ func (c connectorContainer) Close() error {
 	}
 	return nil
 }
+
+func (c connectorContainer) ID() string {
+	return c.id
+}
