@@ -9,7 +9,7 @@ require (
 	go.arcalot.io/assert v1.3.0
 	go.arcalot.io/lang v1.0.0
 	go.arcalot.io/log/v2 v2.0.0
-	go.flow.arcalot.io/deployer v0.1.1
+	go.flow.arcalot.io/deployer v0.2.0
 	go.flow.arcalot.io/pluginsdk v0.2.0
 )
 
@@ -22,7 +22,6 @@ require (
 	github.com/morikuni/aec v1.0.0 // indirect
 	github.com/opencontainers/go-digest v1.0.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
-	github.com/sirupsen/logrus v1.9.3 // indirect
 	github.com/stretchr/testify v1.8.1 // indirect
 	golang.org/x/mod v0.11.0 // indirect
 	golang.org/x/net v0.11.0 // indirect
