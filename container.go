@@ -22,8 +22,10 @@ func (c connectorContainer) Write(p []byte) (n int, err error) {
 }
 
 func (c connectorContainer) Close() error {
-	c.hijackedResponse.Close()
-	_ = c.hijackedResponse.CloseWrite()
+	if c.hijackedResponse != nil {
+		c.hijackedResponse.Close()
+		_ = c.hijackedResponse.CloseWrite()
+	}
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
 	if err := c.cli.ContainerRemove(ctx, c.id, types.ContainerRemoveOptions{
