@@ -3,6 +3,7 @@ package docker
 import (
 	"context"
 	"fmt"
+	"github.com/docker/docker/api/types/container"
 	"time"
 
 	"github.com/docker/docker/api/types"
@@ -28,13 +29,20 @@ func (c connectorContainer) Close() error {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
-	if err := c.cli.ContainerRemove(ctx, c.id, types.ContainerRemoveOptions{
+	/*if err := c.cli.ContainerRemove(ctx, c.id, types.ContainerRemoveOptions{
 		Force: true,
 	}); err != nil {
 		if !client.IsErrNotFound(err) {
 			return fmt.Errorf("failed to remove container %s (%w)", c.id, err)
 		}
+	}*/
+	err := c.cli.ContainerStop(ctx, c.id, container.StopOptions{})
+	if err != nil {
+		if !client.IsErrNotFound(err) {
+			return fmt.Errorf("failed to stop container %s (%w)", c.id, err)
+		}
 	}
+
 	return nil
 }
 
