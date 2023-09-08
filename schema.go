@@ -94,7 +94,7 @@ var Schema = schema.NewTypedScopeSchema[*Config](
 		"Connection",
 		map[string]*schema.PropertySchema{
 			"host": schema.NewPropertySchema(
-				schema.NewStringSchema(schema.IntPointer(1), schema.IntPointer(255), regexp.MustCompile("^[a-z0-9./:_-]+$")),
+				schema.NewStringSchema(schema.IntPointer(1), schema.IntPointer(255), regexp.MustCompile("^[a-zA-Z0-9./:_-]+$")),
 				schema.NewDisplayValue(
 					schema.PointerTo("Host"),
 					schema.PointerTo("Host name for Dockerd."),
