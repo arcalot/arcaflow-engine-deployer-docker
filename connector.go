@@ -4,17 +4,16 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io"
-	"regexp"
-	"strings"
-	"sync"
-	"time"
-
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
 	log "go.arcalot.io/log/v2"
 	"go.flow.arcalot.io/deployer"
+	"io"
+	"regexp"
+	"strings"
+	"sync"
+	"time"
 )
 
 type connector struct {
@@ -124,7 +123,7 @@ func (c connector) createContainer(image string) (*connectorContainer, error) {
 	return cnt, nil
 }
 
-var tagRegexp = regexp.MustCompile("^[a-zA-Z0-9.-]$")
+var validTagRegexp = regexp.MustCompile(`^[a-zA-Z0-9_][a-zA-Z0-9_.-]{0,127}$`)
 
 func (c connector) pullImage(ctx context.Context, image string) error {
 	if c.config.Deployment.ImagePullPolicy == ImagePullPolicyNever {
@@ -139,7 +138,8 @@ func (c connector) pullImage(ctx context.Context, image string) error {
 		}
 		parts := strings.Split(image, ":")
 		tag := parts[len(parts)-1]
-		if len(parts) > 1 && tagRegexp.MatchString(tag) && tag != "latest" && imageExists {
+		// It appears that the tag check is to defer invalid tag errors to docker
+		if len(parts) > 1 && validTagRegexp.MatchString(tag) && tag != "latest" && imageExists {
 			return nil
 		}
 	}
