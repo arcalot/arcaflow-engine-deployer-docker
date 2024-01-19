@@ -38,10 +38,8 @@ func (c *connector) Deploy(ctx context.Context, image string) (deployer.Plugin, 
 		return nil, err
 	}
 
-	//nolint:godox
-	// TODO: Make this sleep workaround no longer needed.
 	// It's required to not crash podman
-	time.Sleep(500 * time.Millisecond)
+	time.Sleep(time.Duration(c.config.Deployment.StartDelayMS) * time.Millisecond)
 
 	if err := c.startContainer(ctx, cnt); err != nil {
 		return nil, err
