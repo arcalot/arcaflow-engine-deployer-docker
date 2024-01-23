@@ -137,7 +137,7 @@ func (c connector) pullImage(ctx context.Context, image string) error {
 		parts := strings.Split(image, ":")
 		tag := parts[len(parts)-1]
 		// It appears that the tag check is to defer invalid tag errors to docker
-		if len(parts) > 1 && validTagRegexp.MatchString(tag) && tag != "latest" && imageExists {
+		if len(parts) > 1 && validTagRegexp.MatchString(tag) && imageExists {
 			return nil
 		}
 	}

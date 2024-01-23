@@ -218,7 +218,7 @@ var Schema = schema.NewTypedScopeSchema[*Config](
 				nil,
 			),
 			"startDelayMS": schema.NewPropertySchema(
-				schema.NewIntSchema(schema.PointerTo(int64(0)), schema.PointerTo(int64(10000)), nil),
+				schema.NewIntSchema(schema.PointerTo(int64(0)), nil, nil),
 				schema.NewDisplayValue(
 					schema.PointerTo("Container start delay"),
 					schema.PointerTo("How many milliseconds to wait between attaching and starting the container."+
