@@ -39,7 +39,9 @@ func (c *connector) Deploy(ctx context.Context, image string) (deployer.Plugin, 
 	}
 
 	// It's required to not crash podman
-	time.Sleep(time.Duration(c.config.Deployment.StartDelayMS) * time.Millisecond)
+	if c.config.Deployment.StartDelayMS > 0 {
+		time.Sleep(time.Duration(c.config.Deployment.StartDelayMS) * time.Millisecond)
+	}
 
 	if err := c.startContainer(ctx, cnt); err != nil {
 		return nil, err
