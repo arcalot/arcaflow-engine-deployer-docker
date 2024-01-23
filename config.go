@@ -50,6 +50,7 @@ type Deployment struct {
 	Platform        *specs.Platform           `json:"platform"`
 
 	ImagePullPolicy ImagePullPolicy `json:"imagePullPolicy"`
+	StartDelayMS    int64           `json:"startDelayMS"`
 }
 
 // Timeouts drive the timeouts for various interactions in relation to Docker.

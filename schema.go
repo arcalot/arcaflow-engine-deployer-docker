@@ -217,6 +217,22 @@ var Schema = schema.NewTypedScopeSchema[*Config](
 				schema.PointerTo(util.JSONEncode(string(ImagePullPolicyIfNotPresent))),
 				nil,
 			),
+			"startDelayMS": schema.NewPropertySchema(
+				schema.NewIntSchema(schema.PointerTo(int64(0)), nil, nil),
+				schema.NewDisplayValue(
+					schema.PointerTo("Container start delay"),
+					schema.PointerTo("How many milliseconds to wait between attaching and starting the container."+
+						" Typically not required, but may be required for buggy implementations of the docker socket, like "+
+						"socketed mode for the Podman deployer"),
+					nil,
+				),
+				false,
+				nil,
+				nil,
+				nil,
+				schema.PointerTo(util.JSONEncode(0)),
+				nil,
+			),
 		},
 	),
 	schema.NewStructMappedObjectSchema[*container.Config](
