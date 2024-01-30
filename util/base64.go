@@ -1,3 +1,5 @@
+// Package util provides utility functions common to the
+// rest of this deployer package.
 package util
 
 import (

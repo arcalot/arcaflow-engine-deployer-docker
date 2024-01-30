@@ -77,7 +77,7 @@ func (c connector) attachContainer(ctx context.Context, cnt *connectorContainer)
 		},
 	)
 	if err != nil {
-		if err2 := cnt.Close(); err != nil {
+		if err2 := cnt.Close(); err2 != nil {
 			c.logger.Warningf("failed to remove previously-created container %s (%v)", cnt.id, err2)
 		}
 		return fmt.Errorf("failed to attach to container %s (%w)", cnt.id, err)

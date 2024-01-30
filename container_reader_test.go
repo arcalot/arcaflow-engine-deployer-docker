@@ -45,7 +45,7 @@ func TestReaderOnBuffered(t *testing.T) {
 	if n != 5 {
 		t.Fatalf("Incorrect number of bytes read: %d", n)
 	}
-	if string(readData[:n]) != "Hello" { // nolint:goconst
+	if string(readData[:n]) != "Hello" { //nolint:goconst
 		t.Fatalf("Incorrect data read from multiplexed reader: %s", string(readData[:n]))
 	}
 
@@ -56,7 +56,7 @@ func TestReaderOnBuffered(t *testing.T) {
 	if n != 7 {
 		t.Fatalf("Incorrect number of bytes read: %d", n)
 	}
-	if string(readData[:n]) != " world!" { // nolint:goconst
+	if string(readData[:n]) != " world!" { //nolint:goconst
 		t.Fatalf("Incorrect data read from multiplexed reader: %s", string(readData[:n]))
 	}
 }
