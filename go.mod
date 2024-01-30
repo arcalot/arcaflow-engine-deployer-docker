@@ -1,6 +1,6 @@
 module go.flow.arcalot.io/dockerdeployer
 
-go 1.18
+go 1.21
 
 require (
 	github.com/docker/docker v24.0.7+incompatible
