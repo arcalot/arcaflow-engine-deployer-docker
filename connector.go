@@ -4,16 +4,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/api/types/container"
-	"github.com/docker/docker/client"
-	log "go.arcalot.io/log/v2"
-	"go.flow.arcalot.io/deployer"
 	"io"
 	"regexp"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/client"
+	log "go.arcalot.io/log/v2"
+	"go.flow.arcalot.io/deployer"
 )
 
 type connector struct {
