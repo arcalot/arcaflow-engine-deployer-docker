@@ -3,6 +3,7 @@ package docker
 import (
 	"context"
 	"fmt"
+	"github.com/docker/docker/api/types/container"
 	"time"
 
 	"github.com/docker/docker/api/types"
@@ -28,7 +29,7 @@ func (c connectorContainer) Close() error {
 	}
 	ctx, cancel := context.WithTimeout(context.Background(), 60*time.Second)
 	defer cancel()
-	if err := c.cli.ContainerRemove(ctx, c.id, types.ContainerRemoveOptions{
+	if err := c.cli.ContainerRemove(ctx, c.id, container.RemoveOptions{
 		Force: true,
 	}); err != nil {
 		if !client.IsErrNotFound(err) {

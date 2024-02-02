@@ -54,7 +54,7 @@ func (c *connector) Deploy(ctx context.Context, image string) (deployer.Plugin, 
 
 func (c *connector) startContainer(ctx context.Context, cnt *connectorContainer) error {
 	c.logger.Debugf("Starting container %s...", cnt.id)
-	if err := c.cli.ContainerStart(ctx, cnt.id, types.ContainerStartOptions{}); err != nil {
+	if err := c.cli.ContainerStart(ctx, cnt.id, container.StartOptions{}); err != nil {
 		if err := cnt.Close(); err != nil {
 			c.logger.Warningf("failed to remove previously-created container %s (%v)", cnt.id, err)
 		}
@@ -68,7 +68,7 @@ func (c connector) attachContainer(ctx context.Context, cnt *connectorContainer)
 	hijackedResponse, err := c.cli.ContainerAttach(
 		ctx,
 		cnt.id,
-		types.ContainerAttachOptions{
+		container.AttachOptions{
 			Stream: true,
 			Stdin:  true,
 			Stdout: true,
