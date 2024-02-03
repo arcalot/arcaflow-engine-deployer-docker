@@ -4,16 +4,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/docker/docker/api/types"
-	"github.com/docker/docker/api/types/container"
-	"github.com/docker/docker/client"
-	log "go.arcalot.io/log/v2"
-	"go.flow.arcalot.io/deployer"
 	"io"
 	"regexp"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/docker/docker/api/types"
+	"github.com/docker/docker/api/types/container"
+	"github.com/docker/docker/client"
+	log "go.arcalot.io/log/v2"
+	"go.flow.arcalot.io/deployer"
 )
 
 type connector struct {
@@ -54,7 +55,7 @@ func (c *connector) Deploy(ctx context.Context, image string) (deployer.Plugin, 
 
 func (c *connector) startContainer(ctx context.Context, cnt *connectorContainer) error {
 	c.logger.Debugf("Starting container %s...", cnt.id)
-	if err := c.cli.ContainerStart(ctx, cnt.id, types.ContainerStartOptions{}); err != nil {
+	if err := c.cli.ContainerStart(ctx, cnt.id, container.StartOptions{}); err != nil {
 		if err := cnt.Close(); err != nil {
 			c.logger.Warningf("failed to remove previously-created container %s (%v)", cnt.id, err)
 		}
@@ -68,7 +69,7 @@ func (c connector) attachContainer(ctx context.Context, cnt *connectorContainer)
 	hijackedResponse, err := c.cli.ContainerAttach(
 		ctx,
 		cnt.id,
-		types.ContainerAttachOptions{
+		container.AttachOptions{
 			Stream: true,
 			Stdin:  true,
 			Stdout: true,
