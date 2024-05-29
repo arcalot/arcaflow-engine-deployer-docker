@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
+	img "github.com/docker/docker/api/types/image"
 	"github.com/docker/docker/client"
-	log "go.arcalot.io/log/v2"
+	"go.arcalot.io/log/v2"
 	"go.flow.arcalot.io/deployer"
 )
 
@@ -145,7 +145,7 @@ func (c connector) pullImage(ctx context.Context, image string) error {
 		}
 	}
 	c.logger.Debugf("Pulling image image %s...", image)
-	pullReader, err := c.cli.ImagePull(ctx, image, types.ImagePullOptions{})
+	pullReader, err := c.cli.ImagePull(ctx, image, img.PullOptions{})
 	if err != nil {
 		return fmt.Errorf("failed to pull image %s (%w)", image, err)
 	}
