@@ -3,7 +3,7 @@ module go.flow.arcalot.io/dockerdeployer
 go 1.21
 
 require (
-	github.com/docker/docker v26.1.4+incompatible
+	github.com/docker/docker v27.0.3+incompatible
 	github.com/docker/go-connections v0.5.0
 	github.com/opencontainers/image-spec v1.1.0
 	go.arcalot.io/assert v1.8.0
