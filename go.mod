@@ -8,9 +8,9 @@ require (
 	github.com/opencontainers/image-spec v1.1.0
 	go.arcalot.io/assert v1.8.0
 	go.arcalot.io/lang v1.1.0
-	go.arcalot.io/log/v2 v2.1.0
+	go.arcalot.io/log/v2 v2.2.0
 	go.flow.arcalot.io/deployer v0.6.1
-	go.flow.arcalot.io/pluginsdk v0.12.1
+	go.flow.arcalot.io/pluginsdk v0.12.2
 )
 
 require (
@@ -35,6 +35,7 @@ require (
 	go.opentelemetry.io/otel/trace v1.28.0 // indirect
 	golang.org/x/net v0.27.0 // indirect
 	golang.org/x/sys v0.22.0 // indirect
+	golang.org/x/term v0.22.0 // indirect
 	golang.org/x/time v0.5.0 // indirect
 	gotest.tools/v3 v3.5.1 // indirect
 )
