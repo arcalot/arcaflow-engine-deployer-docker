@@ -2,14 +2,19 @@ package docker //nolint:testpackage
 import (
 	"bytes"
 	"encoding/binary"
+	"math"
 	"testing"
 )
 
 func encodeFrame(streamType byte, data []byte) []byte {
-	encoded := make([]byte, len(data)+8)
+	dataLen := len(data)
+	if dataLen > math.MaxInt32 {
+		panic("Frame size is too large")
+	}
+	encoded := make([]byte, dataLen+8)
 	copy(encoded[8:], data)
 	encoded[0] = streamType
-	binary.BigEndian.PutUint32(encoded[4:8], uint32(len(data)))
+	binary.BigEndian.PutUint32(encoded[4:8], uint32(dataLen))
 	return encoded
 }
 
