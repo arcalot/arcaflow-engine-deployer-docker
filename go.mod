@@ -2,7 +2,7 @@ module go.flow.arcalot.io/dockerdeployer
 
 go 1.23.0
 
-toolchain go1.23.5
+toolchain go1.24.0
 
 require (
 	github.com/docker/docker v27.5.1+incompatible
