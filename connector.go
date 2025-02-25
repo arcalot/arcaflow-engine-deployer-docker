@@ -132,7 +132,7 @@ func (c connector) pullImage(ctx context.Context, image string) error {
 	}
 	if c.config.Deployment.ImagePullPolicy == ImagePullPolicyIfNotPresent {
 		var imageExists bool
-		if _, _, err := c.cli.ImageInspectWithRaw(ctx, image); err == nil {
+		if _, err := c.cli.ImageInspect(ctx, image); err == nil {
 			imageExists = true
 		} else {
 			imageExists = false
