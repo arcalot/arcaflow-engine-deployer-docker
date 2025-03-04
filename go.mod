@@ -5,9 +5,9 @@ go 1.23.0
 toolchain go1.23.5
 
 require (
-	github.com/docker/docker v28.0.0+incompatible
+	github.com/docker/docker v28.0.1+incompatible
 	github.com/docker/go-connections v0.5.0
-	github.com/opencontainers/image-spec v1.1.0
+	github.com/opencontainers/image-spec v1.1.1
 	go.arcalot.io/assert v1.8.0
 	go.arcalot.io/lang v1.1.0
 	go.arcalot.io/log/v2 v2.2.0
