@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"time"
 
+	cerrdefs "github.com/containerd/errdefs"
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/container"
 	"github.com/docker/docker/client"
@@ -32,7 +33,7 @@ func (c connectorContainer) Close() error {
 	if err := c.cli.ContainerRemove(ctx, c.id, container.RemoveOptions{
 		Force: true,
 	}); err != nil {
-		if !client.IsErrNotFound(err) {
+		if !cerrdefs.IsNotFound(err) {
 			return fmt.Errorf("failed to remove container %s (%w)", c.id, err)
 		}
 	}
